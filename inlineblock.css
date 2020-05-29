@@ -1,0 +1,27 @@
+.floating-box, .inline-block-box {
+    border: solid 3px #0c0;
+    width: 200px;
+    height: 100px;
+    margin: 1em;
+}
+
+.after-floating-box, .after-inline-block-box {
+    border: solid 3px #FDC72F;
+    height: 100px;
+    margin: 1em;
+}
+
+.floating-box {
+    float: left;
+}
+
+.after-floating-box {
+    clear: left;
+}
+
+.inline-block-box {
+    display: inline-block;
+}
+
+/* .after-inline-block-box {
+} */

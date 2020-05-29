@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learnlayout.com Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Learnlayout.com Notes</h1>
+    </header>
+
+    <section>
+        <h2>1. no layout:</h2>
+        <ul>
+            <li>one big column</li>
+            <li>does not play well with
+                <strong>really wide windows</strong></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>2. display property:</h2>
+        <ol>
+            <li>
+                <h3>block</h3>
+            </li>
+            <p>like:
+                <code>div, p, form, header footer, section</code>
+            </p>
+
+            <li>
+                <h3>inline</h3>
+            </li>
+            <p>like:
+                <code>span, a</code>
+            </p>
+            <li>
+                <h3>none</h3>
+            </li>
+            <p>like:
+                <code>script</code>
+                <br>
+                * it is different than
+                <code>visibility: hidden</code>
+            </p>
+        </ol>
+    </section>
+
+    <section>
+        <h2>3. margin: auto;</h2>
+        <code>
+            <pre>
+#main {
+    width: 600px;
+    margin: 0 auto;
+}
+            </pre>
+        </code>
+        <ul>
+            <li>block-level element default behaviour is to expand to fill it&apos;s container</li>
+            <li>setting a width attribute to block-level element will prevent it from stretching out</li>
+            <li>setting margins to <code>auto</code> will horizontally center the element inside it&apos;s container
+            </li>
+            <li>this will be problematic when browser window is narrower than the width</li>
+            <li>it will create horizontal scrollbar</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>4. max-width</h2>
+        <code>
+            <pre>
+#main {
+    max-width: 600px;
+    margin: 0 auto;
+}
+            </pre>
+        </code>
+        <ul>
+            <li>using <code>max-width</code> will improve the situation</li>
+            <li><code>max-width</code> is supported everywhere i.e. safe to use</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>5. the box model</h2>
+        <code>
+            <pre>
+.simple {
+    width: 500px;
+    margin: 20px auto;
+}
+
+.fancy {
+    width: 500px;
+    margin: 20px auto;
+    padding: 50px;
+    border-width: 10px;
+}
+            </pre>
+        </code>
+        <ul>
+            <li>when you set <code>width</code> of element, border and padding are not included</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>6. box-sizing</h2>
+        <code>
+            <pre>
+.simple {
+    width: 500px;
+    margin: 20px auto;
+
+    box-sizing: border-box;
+}
+
+.fancy {
+    width: 500px;
+    margin: 20px auto;
+    padding: 50px;
+
+    border: solid blue 10px;
+    box-sizing: border-box;
+}
+            </pre>
+        </code>
+        <ul>
+            <li>when you set <code>box-sizing: border-box;</code> padding and border will be included in width</li>
+            <li>you can ensure all elements are sized this way by including it in the * selector</li>
+            <li><code>box-sizing</code> is <strong>NOT</strong> supported everywhere i.e. you should include prefixed attributes <code>-web-kit</code> and <code>-moz</code></li>
+        </ul>
+
+        <code>
+            <pre>
+* {
+    -web-kit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+            </pre>
+        </code>
+    </section>
+
+    <!-- POSITION (7/19) -->
+    <section>
+        <h2>7. position</h2>
+        <code>
+            <pre>
+.static {
+    /* default */
+    position: static;
+}
+
+.relative1 {
+    /* same as static */
+    position: relative;
+}
+
+.relative2 {
+    position: relative;
+    top: -20px;
+    left: 20px;
+}
+
+.fixed {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 350px;
+}
+
+.absolute {
+    position: absolute;
+    top: 120px;
+    right: 0;
+    width: 350px;
+}
+            </pre>
+        </code>
+
+        <h3>static</h3>
+        <ul>
+            <li><code>static</code> is the default value</li>
+            <li>A static element is said to be not positioned</li>
+            <li>An element with any other value is said to be positioned</li>
+        </ul>
+
+        <h3>relative</h3>
+        <ul>
+            <li><code>relative</code> behaves same as <code>static</code> unless you add some extra properties</li>
+            <li>setting <code>top, right, bottom or left</code> will cause relative element to be adjusted away from its normal position without affecting other content</li>
+        </ul>
+
+        <h3>fixed</h3>
+        <ul>
+            <li>A fixed element is positioned relative to viewport</li>
+            <li>It always stays in the same place even if the page is scrolled</li>
+            <li>determined by <code>top, right, bottom and left</code> as well</li>
+            <li>A fixed element does not leave a gap where it would normally have been located</li>
+            <li><strong>Mobile browsers have shaky support for fixed</strong></li>
+        </ul>
+
+        <h3>absolute</h3>
+        <ul>
+            <li><code>absolute</code> behaves like <code>fixed</code> except relative to <strong>the nearest positioned ancestor</strong></li>
+            <li>if element has no positioned ancestors, it uses the document body and still moves with scroll</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>8. position example</h2>
+        <a href="position.html" target="_blank">open example in new tab</a>
+        <code>
+            <pre>
+body {
+    margin-bottom: 120px;
+}
+
+.container {
+    position: relative;
+}
+
+.nav {
+    position: absolute;
+    left: 0;
+    width: 200px;
+}
+
+.section {
+    margin-left: 200px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    height: 70px;
+    width: 100%;
+    background-color: white;
+}
+            </pre>
+        </code>
+    </section>
+
+    <!-- FLOAT (9/19) -->
+    <section>
+        <h2>9. float</h2>
+        <code>
+            <pre>
+.float {
+    float: right;
+    margin: 0 0 1em 1em;
+}
+            </pre>
+        </code>
+        <ul>
+            <li><code>float</code> is intended for wrapping text around images</li>
+        </ul>
+    </section>
+    
+    <!-- clear (10/19) -->
+    <section>
+        <h2>10. clear</h2>
+        <code>
+            <pre>
+.box {
+    float: left;
+}
+
+.after-box {
+    clear: left;
+}
+            </pre>
+        </code>
+        <ul>
+            <li>using <code>clear</code> we could move the surrounding element down below the floated element</li>
+            <li><code>left</code> to clear elements to the left or <code>right</code> or even <code>both</code></li>
+        </ul>
+    </section>
+
+    <!-- clearfix (11/19) -->
+    <section>
+        <h2>11. the clearfix hack</h2>
+        <code>
+            <pre>
+img {
+    float: right;
+}
+
+.clearfix {
+    overflow: auto;
+    zoom: 1;
+}
+            </pre>
+        </code>
+        <ul>
+            <li>when image is taller than the element containing it, and it is floated, it can overflow outside its container</li>
+            <li>to fix we could add <code>overflow: auto;</code> to the container</li>
+            <li>to support IE6 we could add <code>zoom: 1;</code> to the container as well</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>12. float layout example</h2>
+        <a href="float.html" target="_blank" rel="noopener noreferrer">open example in new tab</a>
+        <code>
+            <pre>
+.nav {
+    float: left;
+    width: 200px;
+}
+
+.section {
+    margin-left: 200px;
+}
+            </pre>
+        </code>
+    </section>
+
+    <!-- percent width (13/19) -->
+    <section>
+        <h2>13. percent width</h2>
+        <code>
+            <pre>
+img {
+    width: 50%
+}
+            </pre>
+        </code>
+        <ul>
+            <li>Percent is relative to the containing block</li>
+            <li>Great for images</li>
+            <li>Could also combine with <code>min-width</code> and <code>max-width</code></li>
+            <li>Not so great with layouts though</li>
+        </ul>
+    </section>
+
+    <!-- media queries (14/19) -->
+    <section>
+        <h2>14. media queries</h2>
+        <a href="float.html" target="_blank" rel="noopener noreferrer">open example in new tab</a>
+        <code>
+            <pre>
+@media screen and (min-width:600px) {
+    .nav {
+        float: left;
+        width: 25%;
+    }
+
+    .section {
+        margin-left: 25%;
+    }
+}
+
+@media screen and (max-width:599px) {
+    .nav li {
+        display: inline;
+    }
+}
+            </pre>
+        </code>
+    </section>
+
+    <!-- inline-block (15/19) -->
+    <section>
+        <h2>15. inline-block</h2>
+        <a href="inlineblock.html" target="_blank" rel="noopener noreferrer">open example in new tab</a>
+        <code>
+            <pre>
+.floating-box {
+    float: left;
+}
+
+.after-floating-box {
+    clear: left;
+}
+            </pre>
+        </code>
+        <code>
+            <pre>
+.inline-block-box {
+    display: inline-block;
+}
+
+/*
+.after-inline-block-box {
+}
+*/
+            </pre>
+        </code>
+    </section>
+
+    <!-- inline-block layout (16/19) -->
+    <section>
+        <h2>16. inline-block layout</h2>
+        <a href="inlineblocklayout.html" target="_blank" rel="noopener noreferrer">open example in new tab</a>
+        <code>
+            <pre>
+.nav {
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
+}
+
+.column {
+    display: inline-block;
+    vertical-align: top;
+    width: 75%;
+}
+            </pre>
+        </code>
+        <ul>
+            <li><code>inline-block</code> elements are affected by <code>vertical-align</code> property, usually set to <code>top</code></li>
+            <li>You need to set the width of each column</li>
+            <li>There will be gap between the columns if there is any whitespace between them in HTML</li>
+        </ul>
+    </section>
+    
+    <!-- column (17/19) -->
+    <section>
+        <h2>17. column</h2>
+        <code>
+            <pre>
+.three-columns {
+    column-count: 3;
+    column-gap: 1em;
+}
+
+.dynamic-columns {
+    column-width: 10em;
+    column-gap: 1em;
+}
+            </pre>
+        </code>
+        <ul>
+            <li>columns are new, so you need to use the prefixes</li>
+            <li>won't work in IE9 or Opera Mini</li>
+        </ul>
+    </section>
+
+    <!-- flexbox (18/19) -->
+    <section>
+        <h2>18. flexbox</h2>
+        <a href="flex.html" target="_blank" rel="noopener noreferrer">open example in new tab</a>
+        <h3>Simple Flex Layout</h3>
+        <code>
+            <pre>
+.container {
+    display: flex;
+}
+
+.nav {
+    width: 200px;
+}
+
+.content {
+    flex: 1;
+}
+            </pre>
+        </code>
+
+        <h3>Fancy-Flex Layout</h3>
+        <code>
+            <pre>
+.fancy-container {
+    display: flex;
+}
+
+.initial {
+    width: 200px;
+    min-width: 100px;
+}
+
+.none {
+    width: 200px;
+}
+
+.flex1 {
+    flex: 1;
+}
+
+.flex2 {
+    flex: 2;
+}
+            </pre>
+        </code>
+
+        <h3>Flex Center</h3>
+        <code>
+            <pre>
+.vertical-container {
+    height: 300px;
+    margin: auto 1em 1em;
+
+    display: flex;
+    align-items: center;
+    
+    /* justify-content: center; */
+}
+            </pre>
+        </code>
+    </section>
+
+    <footer>
+        <h1>THE END</h1>
+    </footer>
+    
+</body>
+
+<!-- <style>
+    h1 {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 0;
+        margin-left: 0;
+        text-align: center;
+    }
+</style>
+
+<script>
+    var target = document.querySelector('h1');
+
+    window.addEventListener('scroll', (e) => {
+        var shiftX = window.scrollY;
+        var shiftY = window.scrollY*1.1;
+        var maxShift = screen.width;
+
+        if (shiftX > maxShift) shiftX %= maxShift;
+
+        target.style.transform = 'translate3d(' + shiftX + 'px, ' + shiftY + 'px, 0px)';
+    });
+</script> -->
+
+</html>

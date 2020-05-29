@@ -1,0 +1,56 @@
+* {
+    -web-kit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+body {
+    background-color: #f6f6f6;
+}
+
+h1 {
+    max-width: 45%;
+    margin: 30px auto;
+
+    text-align: center;
+}
+
+h2, h3 {
+    margin: 15px 5px;
+}
+
+section {
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 10px;
+    border: solid 1px #fff;
+
+    border-radius: 15px;
+    box-shadow: -15px -15px 25px #fefefe,
+                15px 15px 25px #e6e6e6;
+}
+
+code {
+    background-color: #ddd;
+}
+
+code pre {
+    max-width: 60%;
+    margin: 10px auto;
+    padding: 10px 20px 0px;
+    background-color: #333;
+    color: #fff;
+
+    border-radius: 15px;
+    box-shadow: 5px 5px 8px #000;
+}
+
+/*
+I think this type of selector
+is terrible and should be avoided
+at all costs :D
+*/
+li code, p code {
+    padding: 0 .3em;
+}
